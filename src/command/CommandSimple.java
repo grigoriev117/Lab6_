@@ -3,7 +3,11 @@ package command;
 import java.io.Serializable;
 
 public class CommandSimple implements Serializable {
-    CommandsList current;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -7401945304737774323L;
+	CommandsList current;
 
     public CommandSimple(CommandsList com) {
         current = com;

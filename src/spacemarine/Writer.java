@@ -7,7 +7,11 @@ import java.util.stream.Collectors;
 
 
 public class Writer implements Serializable {
-    LinkedList<String> toWrite = new LinkedList<>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 7521858634784030778L;
+	LinkedList<String> toWrite = new LinkedList<>();
 
     public static void write(Object s) {
         System.out.print(s);
@@ -43,12 +47,12 @@ public class Writer implements Serializable {
 
     public boolean isEnd()
     {
-        //try {
+        try {
             return toWrite.getLast().equals("end");
-        /*}
+        }
         catch (NoSuchElementException e) {
             return true;
-        }*/
+        }
     }
 
     public void writeAll() {

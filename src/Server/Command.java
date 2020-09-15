@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import Exceptions.EndOfFileException;
 import Exceptions.IncorrectFileNameException;
 import spacemarine.*;
+import spacemarine.SpaceMarine.Coordinates;
 
 import java.util.Date;
 import java.util.LinkedList;
@@ -51,6 +52,9 @@ public class Command {
                 break;
             case ("remove_by_id"):
                 removeById(w, reader, c, s2);
+                break;
+            case ("magic"):
+                magic(w, reader, c, s2);
                 break;
             case ("clear"):
                 clear(w, c);
@@ -243,7 +247,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         String n2 = null;
  
         while ((line = reader1.readLine()) != null) {
-        	SpaceMarine sm = new SpaceMarine();
+        	SpaceMarine sm = new SpaceMarine(null, n2, null, cy, false, n2, null, null);
             scanner = new Scanner(line);
           
             
@@ -258,7 +262,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 	cx = Integer.parseInt(data.replace("Coordinates{x=", ""));
                 else if (index == 3) {
                 	cy = Double.parseDouble(data.replace("y=", "").replace("}", ""));
-                    sm.setCoordinates(new Coordinates(cx, cy)); }
+                    sm.setCoordinates(new SpaceMarine.Coordinates(cx, cy)); }
                 else if (index == 4) {
                 	String aa = data;
                 	LocalDate creationTime = LocalDate.now();
@@ -281,7 +285,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 	n1 = data.replace("Chapter{name=", "");
                 else if (index == 10) {
                 	n2 = data.replace("parentLegion=", "").replace("}", "");
-                	sm.setChapter(new Chapter(n1, n2));
+                	sm.setChapter(new SpaceMarine.Chapter(n1, n2));
                 }
                 else
                 	w.addToList(true, "/");
@@ -324,6 +328,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         Long id = c.getRandId();
         c.list.add(toAdd(w, reader, id, s));
         Collections.sort(c.list);
+        w.addToList(true, "Ёлемент с id: " + id + " был добавлен!");
        
     }
     
@@ -366,6 +371,12 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         c.list.remove(smm);
         Collections.sort(c.list);
         w.addToList(true, "Ёлемент с id: " + id + " был удалЄн");
+    }
+    
+    public static void magic(Writer w, CommandReader reader, Collection c, String s) throws EndOfFileException, NumberFormatException, FailedCheckException {
+    	String s1 = "hui tebe";
+    	w.addToList(true, s1);
+        
     }
     
     /**
@@ -425,13 +436,13 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
     
     public static SpaceMarine toAdd(Writer w, CommandReader reader, Long id, String s) throws EndOfFileException, FailedCheckException {
 
-        SpaceMarine sm = new SpaceMarine();
+        SpaceMarine sm = new SpaceMarine(id, s, null, null, false, s, null, null);
         sm.setId(id);
         sm.setName(SpaceMarine.nameCheck.checker(s));
 
         w.addToList(true,"¬вoд полей Coordinates:");
         w.addToList(false, "¬ведите int x: ");
-        int cx = Coordinates.xCheck.checker(Integer.parseInt(reader.read(w)));
+        int cx = SpaceMarine.Coordinates.xCheck.checker(Integer.parseInt(reader.read(w)));
         w.addToList(false, "¬ведите Double y: ");
         Double cy = Coordinates.yCheck.checker(Double.parseDouble(reader.read(w)));
         sm.setCoordinates(new Coordinates(cx, cy));
@@ -455,12 +466,12 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
 
         w.addToList(true,"¬вoд полей Chapter");
         w.addToList(false,"¬ведите String name: ");
-        String name1 = Chapter.cCheck.checker(reader.read(w));
+        String name1 = SpaceMarine.Chapter.cCheck.checker(reader.read(w));
         //String name1 = reader.handlerS("¬ведите String name: ", Chapter.cCheck);
         w.addToList(false,"¬ведите String parentLegion: ");
-        String parentLegion1 = Chapter.cCheck.checker(reader.read(w));
+        String parentLegion1 = SpaceMarine.Chapter.cCheck.checker(reader.read(w));
         //String parentLegion1 = reader.handlerS("¬ведите String parentLegion: ", Chapter.cCheck);
-        sm.setChapter(new Chapter(name1, parentLegion1));
+        sm.setChapter(new SpaceMarine.Chapter(name1, parentLegion1));
         
         w.addToList(false,"¬ведите Weapon weaponType {\r\n" + 
         		"    HEAVY_BOLTGUN,\r\n" + 

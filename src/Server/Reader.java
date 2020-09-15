@@ -24,15 +24,15 @@ public class Reader extends CommandReader {
      * считывание строки
      */
     @Override
-    public String read(Writer w) /*throws EndOfFileException */ {
+    public String read(Writer w) throws EndOfFileException  {
         if (scan.hasNextLine()) {
             String line = scan.nextLine();
             System.out.print(line + "\n");
             return line;
         }
         System.out.print("Конец файла." + "\n");
-        return null; //непроверенная неизвестность "_"
-        //throw new EndOfFileException("Преждевременный конец файла!");
+        return null;
+        
     }
 
 	
