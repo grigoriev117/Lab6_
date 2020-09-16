@@ -20,14 +20,14 @@ import java.util.Scanner;
 
 import java.util.Collections;
 /**
- * Класс для обработки команд, вводимых в консоли
+ * РљР»Р°СЃСЃ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё РєРѕРјР°РЅРґ, РІРІРѕРґРёРјС‹С… РІ РєРѕРЅСЃРѕР»Рё
  */
 
 public class Command {
 	
 
     /**
-     * Обработка команд
+     * РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґ
      * @throws IOException 
      * @throws NumberFormatException 
      * @throws FailedCheckException 
@@ -81,7 +81,7 @@ public class Command {
             	filter_less_than_loyal(w, reader, c, s2);
                 break;
             default:
-            	w.addToList(true, "Такой команды не существует!\n Введите 'help', чтобы посмотреть список доступных команд.");
+            	w.addToList(true, "РўР°РєРѕР№ РєРѕРјР°РЅРґС‹ РЅРµ СЃСѓС‰РµСЃС‚РІСѓРµС‚!\n Р’РІРµРґРёС‚Рµ 'help', С‡С‚РѕР±С‹ РїРѕСЃРјРѕС‚СЂРµС‚СЊ СЃРїРёСЃРѕРє РґРѕСЃС‚СѓРїРЅС‹С… РєРѕРјР°РЅРґ.");
         }
         return true;
     }
@@ -96,32 +96,32 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
     else throw new FailedCheckException();
 };
     /**
-     * help : вывести справку по доступным командам
+     * help : РІС‹РІРµСЃС‚Рё СЃРїСЂР°РІРєСѓ РїРѕ РґРѕСЃС‚СѓРїРЅС‹Рј РєРѕРјР°РЅРґР°Рј
      */
     public static void help(Writer w) {
     	w.addToList(true,
-        				"help : вывести справку по доступным командам\n"+
-    					"info : вывести в стандартный поток вывода информацию о коллекции (тип, дата инициализации, количество элементов и т.д.)\n"+
-    					"show : вывести в стандартный поток вывода все элементы коллекции в строковом представлении\n"+
-    					"add {element} : добавить новый элемент в коллекцию\n"+
-    					"update id {element} : обновить значение элемента коллекции, id которого равен заданному\n"+
-    					"remove_by_id id : удалить элемент из коллекции по его id\n"+
-    					"clear : очистить коллекцию\n"+
-    					"save : сохранить коллекцию в файл\n"+
-    					"execute_script file_name : считать и исполнить скрипт из указанного файла.\n"+
-    					"В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме.\n"+
-    					"exit : завершить программу (без сохранения в файл)\n"+
-    					"remove_first : удалить первый элемент из коллекции\n"+
-    					"head : вывести первый элемент коллекции\n"+
-    					"remove_head : вывести первый элемент коллекции и удалить его\n"+
-    					"remove_all_by_weapon_type weaponType : удалить из коллекции все элементы, значение поля weaponType которого эквивалентно заданному\n"+
-    					"group_counting_by_chapter : сгруппировать элементы коллекции по значению поля chapter, вывести количество элементов в каждой группе\n"+
-    					"filter_less_than_loyal loyal : вывести элементы, значение поля loyal которых меньше заданного\n"
+        				"help : РІС‹РІРµСЃС‚Рё СЃРїСЂР°РІРєСѓ РїРѕ РґРѕСЃС‚СѓРїРЅС‹Рј РєРѕРјР°РЅРґР°Рј\n"+
+    					"info : РІС‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕР»Р»РµРєС†РёРё (С‚РёРї, РґР°С‚Р° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё, РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ Рё С‚.Рґ.)\n"+
+    					"show : РІС‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РєРѕР»Р»РµРєС†РёРё РІ СЃС‚СЂРѕРєРѕРІРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё\n"+
+    					"add {element} : РґРѕР±Р°РІРёС‚СЊ РЅРѕРІС‹Р№ СЌР»РµРјРµРЅС‚ РІ РєРѕР»Р»РµРєС†РёСЋ\n"+
+    					"update id {element} : РѕР±РЅРѕРІРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РєРѕР»Р»РµРєС†РёРё, id РєРѕС‚РѕСЂРѕРіРѕ СЂР°РІРµРЅ Р·Р°РґР°РЅРЅРѕРјСѓ\n"+
+    					"remove_by_id id : СѓРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё РїРѕ РµРіРѕ id\n"+
+    					"clear : РѕС‡РёСЃС‚РёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ\n"+
+    					"save : СЃРѕС…СЂР°РЅРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р»\n"+
+    					"execute_script file_name : СЃС‡РёС‚Р°С‚СЊ Рё РёСЃРїРѕР»РЅРёС‚СЊ СЃРєСЂРёРїС‚ РёР· СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.\n"+
+    					"Р’ СЃРєСЂРёРїС‚Рµ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ РєРѕРјР°РЅРґС‹ РІ С‚Р°РєРѕРј Р¶Рµ РІРёРґРµ, РІ РєРѕС‚РѕСЂРѕРј РёС… РІРІРѕРґРёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ РёРЅС‚РµСЂР°РєС‚РёРІРЅРѕРј СЂРµР¶РёРјРµ.\n"+
+    					"exit : Р·Р°РІРµСЂС€РёС‚СЊ РїСЂРѕРіСЂР°РјРјСѓ (Р±РµР· СЃРѕС…СЂР°РЅРµРЅРёСЏ РІ С„Р°Р№Р»)\n"+
+    					"remove_first : СѓРґР°Р»РёС‚СЊ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё\n"+
+    					"head : РІС‹РІРµСЃС‚Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё\n"+
+    					"remove_head : РІС‹РІРµСЃС‚Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё Рё СѓРґР°Р»РёС‚СЊ РµРіРѕ\n"+
+    					"remove_all_by_weapon_type weaponType : СѓРґР°Р»РёС‚СЊ РёР· РєРѕР»Р»РµРєС†РёРё РІСЃРµ СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ weaponType РєРѕС‚РѕСЂРѕРіРѕ СЌРєРІРёРІР°Р»РµРЅС‚РЅРѕ Р·Р°РґР°РЅРЅРѕРјСѓ\n"+
+    					"group_counting_by_chapter : СЃРіСЂСѓРїРїРёСЂРѕРІР°С‚СЊ СЌР»РµРјРµРЅС‚С‹ РєРѕР»Р»РµРєС†РёРё РїРѕ Р·РЅР°С‡РµРЅРёСЋ РїРѕР»СЏ chapter, РІС‹РІРµСЃС‚Рё РєРѕР»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ РІ РєР°Р¶РґРѕР№ РіСЂСѓРїРїРµ\n"+
+    					"filter_less_than_loyal loyal : РІС‹РІРµСЃС‚Рё СЌР»РµРјРµРЅС‚С‹, Р·РЅР°С‡РµРЅРёРµ РїРѕР»СЏ loyal РєРѕС‚РѕСЂС‹С… РјРµРЅСЊС€Рµ Р·Р°РґР°РЅРЅРѕРіРѕ\n"
                 		
         );
     }
     
-    //remove_first : удалить первый элемент из коллекции
+    //remove_first : СѓРґР°Р»РёС‚СЊ РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё
     public static void removeFirst(Writer w, Collection c) throws EndOfFileException {
         int size = c.list.size();
         int i = 0;
@@ -129,10 +129,10 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 c.list.remove(c.list.get(i));
             }
         else  {
-        	w.addToList(true, "\u001B[31m" + "В коллекции нет элементов" + "\u001B[0m");}
+        	w.addToList(true, "\u001B[31m" + "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ" + "\u001B[0m");}
         Collections.sort(c.list);
     }
-      //  head : вывести первый элемент коллекции
+      //  head : РІС‹РІРµСЃС‚Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё
         public static void head(Writer w, Collection c) throws EndOfFileException {
             int size = c.list.size();
             int i = 0;
@@ -140,10 +140,10 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
             	w.addToList(true, c.list.get(i).toString());
                 }
             else {
-            	w.addToList(true, "\u001B[31m" + "В коллекции нет элементов" + "\u001B[0m");
+            	w.addToList(true, "\u001B[31m" + "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ" + "\u001B[0m");
         }
         }
-    //remove_head : вывести первый элемент коллекции и удалить его
+    //remove_head : РІС‹РІРµСЃС‚Рё РїРµСЂРІС‹Р№ СЌР»РµРјРµРЅС‚ РєРѕР»Р»РµРєС†РёРё Рё СѓРґР°Р»РёС‚СЊ РµРіРѕ
             public static void remove_head(Writer w, Collection c) throws EndOfFileException {
                 int size = c.list.size();
                 int i = 0;
@@ -153,13 +153,13 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 	// Collections.sort(c.list);
                     }
                 else {
-                	w.addToList(true, "\u001B[31m" + "В коллекции нет элементов" + "\u001B[0m");
+                	w.addToList(true, "\u001B[31m" + "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ" + "\u001B[0m");
             }}
             //group_counting_by_chapter
             
                         public static void group_counting_by_chapter(Writer w, Collection c) {
                 if (c.list.isEmpty()) {
-                	w.addToList(true, "В коллекции нет элементов");
+                	w.addToList(true, "Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ");
                     return;
                 }
                 else {
@@ -171,7 +171,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                         }
                 	}
                 	for (int j = 0; j < lan.size(); j++) {
-                		w.addToList(true, "Легион:");
+                		w.addToList(true, "Р›РµРіРёРѕРЅ:");
                 		w.addToList(true, lan.get(j));
                 		int k = 0;
                 		for (SpaceMarine sm : c.list) {
@@ -180,7 +180,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 				k = k+1;
                 			}
                 		}
-                		w.addToList(true, "Всего элементов: " + k);
+                		w.addToList(true, "Р’СЃРµРіРѕ СЌР»РµРјРµРЅС‚РѕРІ: " + k);
                 	}
 
                
@@ -210,7 +210,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
 		Collections.sort(c.list);
         }
         else {
-        	w.addToList(true, "\u001B[32m" + "Такого типа оружия пока нет!" + "\u001B[32m");
+        	w.addToList(true, "\u001B[32m" + "РўР°РєРѕРіРѕ С‚РёРїР° РѕСЂСѓР¶РёСЏ РїРѕРєР° РЅРµС‚!" + "\u001B[32m");
         	}
                 }
 
@@ -220,7 +220,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                  * @param w 
                  */
                 public static void filter_less_than_loyal(Writer w, CommandReader reader, Collection c, String s) throws EndOfFileException {
-                    if (s == "0") w.addToList(true, "Таких элементов нет");
+                    if (s == "0") w.addToList(true, "РўР°РєРёС… СЌР»РµРјРµРЅС‚РѕРІ РЅРµС‚");
                     else {
                     	for (SpaceMarine sm : c.list) {
                             if (sm.getLoyal() == false)
@@ -233,7 +233,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
                 
              public static void upload(Writer w, CommandReader reader, Collection c, String s) throws EndOfFileException, NumberFormatException, IOException {
     	BufferedReader reader1 = new BufferedReader(new FileReader(s));
-        // считываем построчно
+        // СЃС‡РёС‚С‹РІР°РµРј РїРѕСЃС‚СЂРѕС‡РЅРѕ
         String line = null;
         Scanner scanner = null;
         int index = 0;
@@ -291,32 +291,32 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
             c.list.add(sm);
         }
          
-        //закрываем наш ридер
+        //Р·Р°РєСЂС‹РІР°РµРј РЅР°С€ СЂРёРґРµСЂ
         reader.close();
     }      
                 
     /**
-     * Вывести в стандартный поток вывода информацию о коллекции
+     * Р’С‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РёРЅС„РѕСЂРјР°С†РёСЋ Рѕ РєРѕР»Р»РµРєС†РёРё
      * @param w 
      */
     public static void info(Writer w, Collection collection) {
-    	w.addToList(true,"Тип: " + collection.list.getClass().getName());
-    	w.addToList(true,"Колличество элементов: " + collection.list.size());
-    	w.addToList(true,"Дата инициализации: " + collection.getDate());
+    	w.addToList(true,"РўРёРї: " + collection.list.getClass().getName());
+    	w.addToList(true,"РљРѕР»Р»РёС‡РµСЃС‚РІРѕ СЌР»РµРјРµРЅС‚РѕРІ: " + collection.list.size());
+    	w.addToList(true,"Р”Р°С‚Р° РёРЅРёС†РёР°Р»РёР·Р°С†РёРё: " + collection.getDate());
     }
     
     /**
-     * Вывести в стандартный поток вывода все элементы коллекции в строковом представлении
+     * Р’С‹РІРµСЃС‚Рё РІ СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ РїРѕС‚РѕРє РІС‹РІРѕРґР° РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РєРѕР»Р»РµРєС†РёРё РІ СЃС‚СЂРѕРєРѕРІРѕРј РїСЂРµРґСЃС‚Р°РІР»РµРЅРёРё
      * @param w 
      */
     public static void show(Writer w, Collection c) {
         if (c.list.isEmpty()) 
-        	w.addToList(true,"В коллекции нет элементов");
+        	w.addToList(true,"Р’ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ");
         else c.list.forEach(sm -> w.addToList(true, sm));
     }
     
     /**
-     * Добавить элемент в коллекцию
+     * Р”РѕР±Р°РІРёС‚СЊ СЌР»РµРјРµРЅС‚ РІ РєРѕР»Р»РµРєС†РёСЋ
      * @param w 
      * @throws FailedCheckException 
      */
@@ -328,7 +328,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
     }
     
     /**
-     * Обновить значение элемента коллекции, id которого равен заданному
+     * РћР±РЅРѕРІРёС‚СЊ Р·РЅР°С‡РµРЅРёРµ СЌР»РµРјРµРЅС‚Р° РєРѕР»Р»РµРєС†РёРё, id РєРѕС‚РѕСЂРѕРіРѕ СЂР°РІРµРЅ Р·Р°РґР°РЅРЅРѕРјСѓ
      * @param w 
      * @throws FailedCheckException 
      */
@@ -338,11 +338,11 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         
         SpaceMarine smm = c.searchById(id);
         if (smm == null) {
-        	w.addToList(true, "Элемент не найден");
+        	w.addToList(true, "Р­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ");
             return;
         }
         String name = SpaceMarine.nameCheck.checker(reader.read(w));
-        //String name = reader.handlerS("Введите String: name", SpaceMarine.nameCheck);
+        //String name = reader.handlerS("Р’РІРµРґРёС‚Рµ String: name", SpaceMarine.nameCheck);
         c.list.set(c.list.indexOf(smm), toAdd(w, reader, id, name));
         
         Collections.sort(c.list);
@@ -351,7 +351,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
     }
     
     /**
-     * Удалить элемент из коллекции по его id
+     * РЈРґР°Р»РёС‚СЊ СЌР»РµРјРµРЅС‚ РёР· РєРѕР»Р»РµРєС†РёРё РїРѕ РµРіРѕ id
      * @throws FailedCheckException 
      * @throws NumberFormatException 
      */
@@ -360,33 +360,33 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         
         SpaceMarine smm = c.searchById(id);
         if (smm == null) {
-        	w.addToList(true,"Элемент не найден");
+        	w.addToList(true,"Р­Р»РµРјРµРЅС‚ РЅРµ РЅР°Р№РґРµРЅ");
             return;
         }
         c.list.remove(smm);
         Collections.sort(c.list);
-        w.addToList(true, "Элемент с id: " + id + " был удалён");
+        w.addToList(true, "Р­Р»РµРјРµРЅС‚ СЃ id: " + id + " Р±С‹Р» СѓРґР°Р»С‘РЅ");
     }
     
     /**
-     * Сохраняет коллекцию в файл
+     * РЎРѕС…СЂР°РЅСЏРµС‚ РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р»
      */
     public static void save(Collection c) {
         SaveManagement.saveToFile(c);
     }
 
     /**
-     * Удаляет все элементы из коллекции
+     * РЈРґР°Р»СЏРµС‚ РІСЃРµ СЌР»РµРјРµРЅС‚С‹ РёР· РєРѕР»Р»РµРєС†РёРё
      * @param w 
      */
     public static void clear(Writer w, Collection c) {
         c.list.clear();
-        w.addToList(true, "Теперь в коллекции нет элементов!");
+        w.addToList(true, "РўРµРїРµСЂСЊ РІ РєРѕР»Р»РµРєС†РёРё РЅРµС‚ СЌР»РµРјРµРЅС‚РѕРІ!");
     }
     
      /**
-     * Считывает и исполняет скрипт из указанного файла.
-     * В скрипте содержатся команды в таком же виде, в котором их вводит пользователь в интерактивном режиме
+     * РЎС‡РёС‚С‹РІР°РµС‚ Рё РёСЃРїРѕР»РЅСЏРµС‚ СЃРєСЂРёРїС‚ РёР· СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
+     * Р’ СЃРєСЂРёРїС‚Рµ СЃРѕРґРµСЂР¶Р°С‚СЃСЏ РєРѕРјР°РЅРґС‹ РІ С‚Р°РєРѕРј Р¶Рµ РІРёРґРµ, РІ РєРѕС‚РѕСЂРѕРј РёС… РІРІРѕРґРёС‚ РїРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІ РёРЅС‚РµСЂР°РєС‚РёРІРЅРѕРј СЂРµР¶РёРјРµ
      * @param w 
      * @throws IOException 
      * @throws NumberFormatException 
@@ -399,25 +399,25 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
             if (RecursionHandler.isContains(s)) {
                 RecursionHandler.addToFiles(s);
                 String[] com;
-                w.addToList(false,"\u001B[36m" + "Чтение команды в файле " + s + ": " + "\u001B[36m");
+                w.addToList(false,"\u001B[36m" + "Р§С‚РµРЅРёРµ РєРѕРјР°РЅРґС‹ РІ С„Р°Р№Р»Рµ " + s + ": " + "\u001B[36m");
                 String line = reader.read(w);
                 while (line != null && programIsWorking) {
                     com = CommandReader.splitter(line);
                     programIsWorking = Command.switcher(w, reader, c, com[0], com[1]);
-                    w.addToList(false, "\u001B[33m" + "Чтение команды в файле " + s + ": " + "\u001B[0m");
+                    w.addToList(false, "\u001B[33m" + "Р§С‚РµРЅРёРµ РєРѕРјР°РЅРґС‹ РІ С„Р°Р№Р»Рµ " + s + ": " + "\u001B[0m");
                     line = reader.read(w);
                 }
                 RecursionHandler.removeLast();
             } else
-            	w.addToList(true,"\u001B[31m" + "Кто-то хочет устроить рекурсию? Не ломай прогу!" + "\u001B[31m");
+            	w.addToList(true,"\u001B[31m" + "РљС‚Рѕ-С‚Рѕ С…РѕС‡РµС‚ СѓСЃС‚СЂРѕРёС‚СЊ СЂРµРєСѓСЂСЃРёСЋ? РќРµ Р»РѕРјР°Р№ РїСЂРѕРіСѓ!" + "\u001B[31m");
 
         } catch (IncorrectFileNameException e) {
-        	w.addToList(true, "\u001B[31m" + "Неверное имя файла" + "\u001B[0m");
+        	w.addToList(true, "\u001B[31m" + "РќРµРІРµСЂРЅРѕРµ РёРјСЏ С„Р°Р№Р»Р°" + "\u001B[0m");
         } catch (EndOfFileException e) {
-        	w.addToList(true, "\u001B[31m" + "Неожиданный конец файла " + s + "\u001B[0m");
+        	w.addToList(true, "\u001B[31m" + "РќРµРѕР¶РёРґР°РЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р° " + s + "\u001B[0m");
             RecursionHandler.removeLast();
         } catch (FileNotFoundException e) {
-        	w.addToList(true, "\u001B[31m" + "Файл не найден" + "\u001B[0m");
+        	w.addToList(true, "\u001B[31m" + "Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ" + "\u001B[0m");
         }
         return programIsWorking;
     }
@@ -429,40 +429,40 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         sm.setId(id);
         sm.setName(SpaceMarine.nameCheck.checker(s));
 
-        w.addToList(true,"Ввoд полей Coordinates:");
-        w.addToList(false, "Введите int x: ");
+        w.addToList(true,"Р’РІoРґ РїРѕР»РµР№ Coordinates:");
+        w.addToList(false, "Р’РІРµРґРёС‚Рµ int x: ");
         int cx = Coordinates.xCheck.checker(Integer.parseInt(reader.read(w)));
-        w.addToList(false, "Введите Double y: ");
+        w.addToList(false, "Р’РІРµРґРёС‚Рµ Double y: ");
         Double cy = Coordinates.yCheck.checker(Double.parseDouble(reader.read(w)));
         sm.setCoordinates(new Coordinates(cx, cy));
 
         LocalDate creationTime = LocalDate.now();
         sm.setCreationDate(creationTime);
         
-        w.addToList(false, "Введите Double health, больше 0:");
+        w.addToList(false, "Р’РІРµРґРёС‚Рµ Double health, Р±РѕР»СЊС€Рµ 0:");
         Double health1 = SpaceMarine.healthCheck.checker(Double.parseDouble(reader.read(w)));
-        //Double health1 = reader.handlerD("Введите Double health, больше 0:", SpaceMarine.healthCheck);
+        //Double health1 = reader.handlerD("Р’РІРµРґРёС‚Рµ Double health, Р±РѕР»СЊС€Рµ 0:", SpaceMarine.healthCheck);
         sm.setHealth(health1);
 
-        w.addToList(false, "Введите boolean loyal");
+        w.addToList(false, "Р’РІРµРґРёС‚Рµ boolean loyal");
         boolean loyal1 = boolCheck.checker(Boolean.parseBoolean(reader.read(w)));
-        //boolean loyal1 = reader.handlerB("Введите boolean loyal", boolCheck);
+        //boolean loyal1 = reader.handlerB("Р’РІРµРґРёС‚Рµ boolean loyal", boolCheck);
         sm.setLoyal(loyal1);
         
         String achievements = SpaceMarine.nameCheck.checker(reader.read(w));
-        //String achievements = reader.handlerS("Введите String achievements", SpaceMarine.nameCheck);
+        //String achievements = reader.handlerS("Р’РІРµРґРёС‚Рµ String achievements", SpaceMarine.nameCheck);
         sm.setAchievements(achievements);
 
-        w.addToList(true,"Ввoд полей Chapter");
-        w.addToList(false,"Введите String name: ");
+        w.addToList(true,"Р’РІoРґ РїРѕР»РµР№ Chapter");
+        w.addToList(false,"Р’РІРµРґРёС‚Рµ String name: ");
         String name1 = Chapter.cCheck.checker(reader.read(w));
-        //String name1 = reader.handlerS("Введите String name: ", Chapter.cCheck);
-        w.addToList(false,"Введите String parentLegion: ");
+        //String name1 = reader.handlerS("Р’РІРµРґРёС‚Рµ String name: ", Chapter.cCheck);
+        w.addToList(false,"Р’РІРµРґРёС‚Рµ String parentLegion: ");
         String parentLegion1 = Chapter.cCheck.checker(reader.read(w));
-        //String parentLegion1 = reader.handlerS("Введите String parentLegion: ", Chapter.cCheck);
+        //String parentLegion1 = reader.handlerS("Р’РІРµРґРёС‚Рµ String parentLegion: ", Chapter.cCheck);
         sm.setChapter(new Chapter(name1, parentLegion1));
         
-        w.addToList(false,"Введите Weapon weaponType {\r\n" + 
+        w.addToList(false,"Р’РІРµРґРёС‚Рµ Weapon weaponType {\r\n" + 
         		"    HEAVY_BOLTGUN,\r\n" + 
         		"    BOLT_RIFLE,\r\n" + 
         		"    PLASMA_GUN,\r\n" + 
@@ -476,7 +476,7 @@ public static Checker<Boolean> boolCheck = (Boolean B) -> {
         	sm.setWeaponType(SpaceMarine.Weapon.valueOf(weaponType1));
         }
         else {
-        	w.addToList(true,"Введите из предложенных");
+        	w.addToList(true,"Р’РІРµРґРёС‚Рµ РёР· РїСЂРµРґР»РѕР¶РµРЅРЅС‹С…");
         	w.addToList(true,"    HEAVY_BOLTGUN,\r\n" + 
     		"    BOLT_RIFLE,\r\n" + 
     		"    PLASMA_GUN,\r\n" + 
