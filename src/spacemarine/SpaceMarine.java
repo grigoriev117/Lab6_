@@ -3,16 +3,26 @@ package spacemarine;
 import java.time.LocalDate;
 import Exceptions.FailedCheckException;
 
-public class SpaceMarine implements Comparable<Object>{
-    private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
-    private String name; //Поле не может быть null, Строка не может быть пустой
-    private Coordinates coordinates; //Поле не может быть null
-    private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
-    private Double health; //Поле может быть null, Значение поля должно быть больше 0
+package spacemarine;
+
+import java.io.Serializable;
+import java.time.LocalDate;
+import Exceptions.FailedCheckException;
+
+public class SpaceMarine implements Comparable<Object>, Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 137;
+	private Long id; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ СѓРЅРёРєР°Р»СЊРЅС‹Рј, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+    private String name; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, РЎС‚СЂРѕРєР° РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РїСѓСЃС‚РѕР№
+    private Coordinates coordinates; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private java.time.LocalDate creationDate; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ СЌС‚РѕРіРѕ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ РіРµРЅРµСЂРёСЂРѕРІР°С‚СЊСЃСЏ Р°РІС‚РѕРјР°С‚РёС‡РµСЃРєРё
+    private Double health; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null, Р—РЅР°С‡РµРЅРёРµ РїРѕР»СЏ РґРѕР»Р¶РЅРѕ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ 0
     private boolean loyal;
-    private String achievements; //Поле не может быть null
-    private Weapon weaponType; //Поле может быть null
-    private Chapter chapter; //Поле не может быть null
+    private String achievements; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Weapon weaponType; //РџРѕР»Рµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
+    private Chapter chapter; //РџРѕР»Рµ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ null
 
    
 @Override
@@ -109,7 +119,7 @@ public void setChapter(Chapter chapter) {
 }
 
 /**
- * Конвертирование элемента списка в удобный для сохранения формат
+ * РљРѕРЅРІРµСЂС‚РёСЂРѕРІР°РЅРёРµ СЌР»РµРјРµРЅС‚Р° СЃРїРёСЃРєР° РІ СѓРґРѕР±РЅС‹Р№ РґР»СЏ СЃРѕС…СЂР°РЅРµРЅРёСЏ С„РѕСЂРјР°С‚
  */
 public String toCSVfile() {
     String CSV = toString1();
@@ -124,14 +134,14 @@ public static Checker<Weapon> WeaponCheck = (Weapon W) -> {
 
 
 /**
- * Проверка Long
+ * РџСЂРѕРІРµСЂРєР° Long
  */
 public static Checker<Long> idCheck = (Long L) -> {
      if (L != null ) return L;
      else throw new FailedCheckException();
 };
 /**
- * Проверка Integer
+ * РџСЂРѕРІРµСЂРєР° Integer
  */
 public static Checker<Integer> idCheck1 = (Integer I) -> {
     if (I != null && I > 0) return I;
@@ -139,7 +149,7 @@ public static Checker<Integer> idCheck1 = (Integer I) -> {
 };
 
 /**
- * Проверка String
+ * РџСЂРѕРІРµСЂРєР° String
  */
 public static Checker<String> nameCheck = (String S) -> {
     if (S != null && S.length() != 0) return S;
@@ -147,7 +157,7 @@ public static Checker<String> nameCheck = (String S) -> {
 };
 
 /**
- * Проверка Double
+ * РџСЂРѕРІРµСЂРєР° Double
  */
 public static Checker<Double> healthCheck = (Double D) -> {
     if (D != null) return D;
@@ -155,12 +165,12 @@ public static Checker<Double> healthCheck = (Double D) -> {
 };
 
 /**
- * Проверка boolean
+ * РџСЂРѕРІРµСЂРєР° boolean
  */
 
 
 /**
- * Сравнение объектов.
+ * РЎСЂР°РІРЅРµРЅРёРµ РѕР±СЉРµРєС‚РѕРІ.
  */
 
 @Override
