@@ -63,8 +63,8 @@ public class Server {
             InputStreamReader fileInputStream = new InputStreamReader(System.in);
             BufferedReader bufferedReader = new BufferedReader(fileInputStream);
 
-            Writer.writeln("Сервер запущен.");
-            logger.info("Сервер запущен. " + serverSocket.getLocalAddress());
+            Writer.writeln("РЎРµСЂРІРµСЂ Р·Р°РїСѓС‰РµРЅ.");
+            logger.info("РЎРµСЂРІРµСЂ Р·Р°РїСѓС‰РµРЅ. " + serverSocket.getLocalAddress());
 
             while (true) {
                 if (bufferedReader.ready())
@@ -74,10 +74,10 @@ public class Server {
                     //	if (bufferedReader.readLine().equals("save"))
                     	//	SaveManagement.saveToFile(collection);
                     	//else {if (bufferedReader.readLine().equals("save"))
-                    	//	Writer.writeln("Чтобы сохранить коллекцию в файл - введите save /n"
-                    		//		+ "Чтобы выйти - введите exit");
+                    	//	Writer.writeln("Р§С‚РѕР±С‹ СЃРѕС…СЂР°РЅРёС‚СЊ РєРѕР»Р»РµРєС†РёСЋ РІ С„Р°Р№Р» - РІРІРµРґРёС‚Рµ save /n"
+                    		//		+ "Р§С‚РѕР±С‹ РІС‹Р№С‚Рё - РІРІРµРґРёС‚Рµ exit");
                     	else
-                        Writer.writeln("Неизвестная комманда.");
+                        Writer.writeln("РќРµРёР·РІРµСЃС‚РЅР°СЏ РєРѕРјРјР°РЅРґР°.");
                 if (selector.selectNow() <= 0) {
                     Thread.sleep(1000);
                     continue;
@@ -103,17 +103,17 @@ public class Server {
                 }
             }
             serverSocket.close();
-            logger.info("Сервер закрыт");
+            logger.info("РЎРµСЂРІРµСЂ Р·Р°РєСЂС‹С‚");
         } catch (IOException | ClassNotFoundException e) {
-            Writer.writeln("Пренудительное закрытие сервера.");
-            logger.error("Пренудительное закрытие сервера.");
+            Writer.writeln("РџСЂРµРЅСѓРґРёС‚РµР»СЊРЅРѕРµ Р·Р°РєСЂС‹С‚РёРµ СЃРµСЂРІРµСЂР°.");
+            logger.error("РџСЂРµРЅСѓРґРёС‚РµР»СЊРЅРѕРµ Р·Р°РєСЂС‹С‚РёРµ СЃРµСЂРІРµСЂР°.");
             logger.error(e.getLocalizedMessage());
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         SaveManagement.saveToFile(collection);
-        logger.info("Коллекция сохранена");
+        logger.info("РљРѕР»Р»РµРєС†РёСЏ СЃРѕС…СЂР°РЅРµРЅР°");
     }
 
     private static void answer(ByteBuffer buffer, SelectionKey key) throws IOException, ClassNotFoundException, EndOfFileException {
@@ -126,9 +126,9 @@ public class Server {
         Writer w = CommandConvert.switcher(command, collection);
 
         if (number == 0) {
-            Writer.writeln("Вызвана команада: " + command.getCurrent().toString());
-            logger.info("Вызвана команада: " + command.toString());
-            logger.info("Комманда обработана успешно. Ответ:" + (w.toString()));
+            Writer.writeln("Р’С‹Р·РІР°РЅР° РєРѕРјР°РЅР°РґР°: " + command.getCurrent().toString());
+            logger.info("Р’С‹Р·РІР°РЅР° РєРѕРјР°РЅР°РґР°: " + command.toString());
+            logger.info("РљРѕРјРјР°РЅРґР° РѕР±СЂР°Р±РѕС‚Р°РЅР° СѓСЃРїРµС€РЅРѕ. РћС‚РІРµС‚:" + (w.toString()));
         }
             w.shatter();
 
@@ -158,9 +158,9 @@ public class Server {
         } catch (SocketException e) {
             client.close();
             buffer.clear();
-            Writer.writeln("Соединение разорвано...");
-            Writer.writeln("Сервер продолжит работать. Попробуйте запустить другой клиент, чтобы восстановить соединение.");
-            logger.info("Соединение разорвано. Сервер продолжил работать.");
+            Writer.writeln("РЎРѕРµРґРёРЅРµРЅРёРµ СЂР°Р·РѕСЂРІР°РЅРѕ...");
+            Writer.writeln("РЎРµСЂРІРµСЂ РїСЂРѕРґРѕР»Р¶РёС‚ СЂР°Р±РѕС‚Р°С‚СЊ. РџРѕРїСЂРѕР±СѓР№С‚Рµ Р·Р°РїСѓСЃС‚РёС‚СЊ РґСЂСѓРіРѕР№ РєР»РёРµРЅС‚, С‡С‚РѕР±С‹ РІРѕСЃСЃС‚Р°РЅРѕРІРёС‚СЊ СЃРѕРµРґРёРЅРµРЅРёРµ.");
+            logger.info("РЎРѕРµРґРёРЅРµРЅРёРµ СЂР°Р·РѕСЂРІР°РЅРѕ. РЎРµСЂРІРµСЂ РїСЂРѕРґРѕР»Р¶РёР» СЂР°Р±РѕС‚Р°С‚СЊ.");
             return;
         }
 
@@ -172,7 +172,7 @@ public class Server {
         SocketChannel client = serverSocket.accept();
         client.configureBlocking(false);
         client.register(selector, SelectionKey.OP_READ);
-        Writer.writeln("Соединение уcтановлено: " + client.getLocalAddress());
-        logger.info("Соединение уcтановлено: " + client.getLocalAddress());
+        Writer.writeln("РЎРѕРµРґРёРЅРµРЅРёРµ СѓcС‚Р°РЅРѕРІР»РµРЅРѕ: " + client.getLocalAddress());
+        logger.info("РЎРѕРµРґРёРЅРµРЅРёРµ СѓcС‚Р°РЅРѕРІР»РµРЅРѕ: " + client.getLocalAddress());
     }
 }
