@@ -9,19 +9,19 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 /**
- * класс для считывания команд с файла
+ * РєР»Р°СЃСЃ РґР»СЏ СЃС‡РёС‚С‹РІР°РЅРёСЏ РєРѕРјР°РЅРґ СЃ С„Р°Р№Р»Р°
  */
 public class Reader extends CommandReader {
     public Reader(String file) throws IncorrectFileNameException, FileNotFoundException {
 
         File f = new File(file);
         if (!f.exists())
-            throw new IncorrectFileNameException("Ошибка! Файл не найден!");
+            throw new IncorrectFileNameException("РћС€РёР±РєР°! Р¤Р°Р№Р» РЅРµ РЅР°Р№РґРµРЅ!");
         scan = new Scanner(new File(file));
     }
 
     /**
-     * считывание строки
+     * СЃС‡РёС‚С‹РІР°РЅРёРµ СЃС‚СЂРѕРєРё
      */
     @Override
     public String read(Writer w) /*throws EndOfFileException */ {
@@ -30,9 +30,9 @@ public class Reader extends CommandReader {
             System.out.print(line + "\n");
             return line;
         }
-        System.out.print("Конец файла." + "\n");
-        return null; //непроверенная неизвестность "_"
-        //throw new EndOfFileException("Преждевременный конец файла!");
+        System.out.print("РљРѕРЅРµС† С„Р°Р№Р»Р°." + "\n");
+        return null; //РЅРµРїСЂРѕРІРµСЂРµРЅРЅР°СЏ РЅРµРёР·РІРµСЃС‚РЅРѕСЃС‚СЊ "_"
+        //throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
     }
 
 	
