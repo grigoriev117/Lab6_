@@ -1,17 +1,10 @@
 package spacemarine;
-import java.io.Serializable;
-import java.time.LocalDate;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
+import java.time.LocalDate;
 import Exceptions.FailedCheckException;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
-public class SpaceMarine implements Comparable<Object>, Serializable{
-    /**
-	 * 
-	 */
-	private static final long serialVersionUID = 6714104594294574184L;
-	private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
+public class SpaceMarine implements Comparable<Object>{
+    private Long id; //Поле не может быть null, Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
     private Coordinates coordinates; //Поле не может быть null
     private java.time.LocalDate creationDate; //Поле не может быть null, Значение этого поля должно генерироваться автоматически
@@ -20,28 +13,25 @@ public class SpaceMarine implements Comparable<Object>, Serializable{
     private String achievements; //Поле не может быть null
     private Weapon weaponType; //Поле может быть null
     private Chapter chapter; //Поле не может быть null
-    public SpaceMarine(){
-    	
-    }
-   // public SpaceMarine(CustomType custom) {}
+
    
 @Override
 public String toString() {
     return "SpaceMarine{" +
             "id=" + id +
             ", name='" + name + '\'' +
-            ", coordinates=" + coordinates.toString() +
+            ", coordinates=" + coordinates +
             ", creationDate=" + creationDate +
             ", health=" + health +
             ", loyal=" + loyal +
             ", achievements=" + achievements +
             ", weaponType=" + weaponType +
-            ", chapter=" + chapter.toString() +
+            ", chapter=" + chapter +
             '}';
 }
 
 public String toString1() {
-    return id + ","+name + ","+coordinates.toString() +","+ creationDate + ","+health + ","+loyal +","+ achievements +","+ weaponType +","+ chapter.toString();
+    return id + ","+name + ","+coordinates +","+ creationDate + ","+health + ","+loyal +","+ achievements +","+ weaponType +","+ chapter;
 }
 
 

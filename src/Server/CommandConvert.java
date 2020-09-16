@@ -3,7 +3,6 @@ import spacemarine.*;
 import command.*;
 import Exceptions.FailedCheckException;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.time.LocalDate;
 import Exceptions.EndOfFileException;
 import Exceptions.IncorrectFileNameException;
@@ -13,22 +12,17 @@ import java.util.LinkedList;
 
 
 import java.io.BufferedReader;
-import java.io.FileInputStream;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.StringReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Collections;
 
 public class CommandConvert {
 	
-	public static Writer switcher(CommandSimple com, Collection c) throws IOException, EndOfFileException, ClassNotFoundException {
+	public static Writer switcher(CommandSimple com, Collection c) throws IOException, EndOfFileException {
         switch (com.getCurrent()) {
             case HELP:
                 return help();
@@ -38,8 +32,6 @@ public class CommandConvert {
                 return show(c);
             case ADD:
                 return add(c, com);
-            case MAGIC:
-            	return magic(c, com);
             case UPDATE:
                 return update(c, com);
             case REMOVE_BY_ID:
@@ -193,28 +185,6 @@ public class CommandConvert {
         Collections.sort(c.list);
 
         w.addToList(false,"end");
-        return w;
-    }
-    
-    public static Writer magic(Collection c, CommandSimple com) throws IOException, ClassNotFoundException {
-        Writer w = new Writer();
-        String s = (String) com.returnObj();
-       // FileInputStream fileInputStream = new FileInputStream("save.ser");
-       // ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
-       // SpaceMarine sm = (SpaceMarine) objectInputStream.readObject();
-       StringReader reader = new StringReader(s);
-       ObjectMapper mapper = new ObjectMapper();
-        
-        SpaceMarine sm = mapper.readValue(reader, SpaceMarine.class);
-        Long id = c.getRandId();
-        sm.setId(id);
-        c.list.add(sm);
-        w.addToList(true, s);
-        Collections.sort(c.list);
-        //c.list.add(sm);
-        w.addToList(false,"end"); 
-        //w.addToList(true, s);
-        //w.addToList(false,"end");
         return w;
     }
     

@@ -70,7 +70,7 @@ public class SaveManagement {
         String n2 = null;
  try {
         while ((line = reader1.readLine()) != null) {
-        	SpaceMarine sm = new SpaceMarine(null, n2, null, cy, false, n2, null, null);
+        	SpaceMarine sm = new SpaceMarine();
             scanner = new Scanner(line);
             scanner.useDelimiter(",");
             while (scanner.hasNext()) {
@@ -83,7 +83,7 @@ public class SaveManagement {
                 	cx = Integer.parseInt(data.replace("Coordinates{x=", ""));
                 else if (index == 3) {
                 	cy = Double.parseDouble(data.replace("y=", "").replace("}", ""));
-                    sm.setCoordinates(new SpaceMarine.Coordinates(cx, cy)); }
+                    sm.setCoordinates(new Coordinates(cx, cy)); }
                 else if (index == 4) {
                 	String aa = data;
                 	LocalDate creationTime = LocalDate.now();
@@ -106,7 +106,7 @@ public class SaveManagement {
                 	n1 = data.replace("Chapter{name=", "");
                 else if (index == 10) {
                 	n2 = data.replace("parentLegion=", "").replace("}", "");
-                	sm.setChapter(new SpaceMarine.Chapter(n1, n2));
+                	sm.setChapter(new Chapter(n1, n2));
                 }
                 else
                 	Writer.writeln("/");

@@ -16,6 +16,5 @@ public enum CommandsList {
     REMOVE_HEAD,
     REMOVE_ALL_BY_WEAPON_TYPE,
     GROUP_COUNTING_BY_CHAPTER,
-    MAGIC,
     FILTER_LESS_THAN_LOYAL
 }

@@ -36,23 +36,22 @@ public class Client {
                         }
                     }
                 } catch (IOException e) {
-                    Writer.writeln("\u001B[31m" + "�� ������� �������� ��� ��������� ����� �� �������." + "\u001B[0m");
-                    Writer.writeln("\u001B[31m" + "���������� ���������." + "\u001B[0m");
+                    Channel.channel("\u001B[31m" + "Не удалось получить или прочитать ответ от сервера." + "\u001B[0m");
+                    Channel.channel("\u001B[31m" + "Соединение разорвано." + "\u001B[0m");
                 }
                 sc.close();
-            } while (!exit && ConsoleClient.handlerB("����������� �������������� ������? boolean: ", CommandConvertClient.boolCheck));
+            } while (!exit && ConsoleClient.handlerB("Попробовать переподключить клиент? boolean: ", CommandConvertClient.boolCheck));
         } catch (IOException e) {
-            Writer.writeln("\u001B[31m" + "������������ �������� ������." + "\u001B[0m");
+        	Channel.channel("\u001B[31m" + "Неправильное закрытие сокета." + "\u001B[0m");
         } catch (ClassNotFoundException e) {
-            Writer.writeln("\u001B[31m" + "����������� ����� ��� ������������." + "\u001B[0m");
+        	Channel.channel("\u001B[31m" + "Отсутствует класс для сериализации." + "\u001B[0m");
             exit = true;
         } catch (EndOfFileException e) {
-            Writer.writeln("\u001B[31m" + "����������� ���������� ������ �������" + "\u001B[0m");//ctrl-d
+        	Channel.channel("\u001B[31m" + "Неожиданное завершение работы консоли" + "\u001B[0m");//ctrl-d
             exit = true;
         }
-        Writer.writeln("������ ��� ������...");
+        Channel.channel("Клиент был закрыт...");
     }
-
 
     public static Boolean process(Selector selector) throws IOException, EndOfFileException, ClassNotFoundException {
         Iterator<SelectionKey> iterator = selector.selectedKeys().iterator();
@@ -80,13 +79,13 @@ public class Client {
                     if (w.isEnd())
                         key.interestOps(SelectionKey.OP_WRITE);
                 } else {
-                	Writer.writeln("Отсутствуют данные вывода");
+                	Channel.channel("Отсутствуют данные вывода");
                     key.interestOps(SelectionKey.OP_WRITE);
                 }
             }
             if (key.isWritable()) {
 
-            	Writer.writeln("\u001B[33m" + "Ожидание ввода команды: " + "\u001B[0m");
+            	Channel.channel("\u001B[33m" + "Ожидание ввода команды: " + "\u001B[0m");
                 String[] com = CommandReader.splitter(ConsoleClient.console.read());
                 CommandSimple command = CommandConvertClient.switcher(com[0], com[1]);
 
@@ -106,7 +105,7 @@ public class Client {
                 ByteBuffer bb = ByteBuffer.wrap(byteArrayOutputStream.toByteArray());
                 if (bb.array().length > 8192)
                 {
-                	Writer.writeln("Отправляемые дынные слишком большие (" + bb.array().length + " > 8192). ");
+                	Channel.channel("Отправляемые дынные слишком большие (" + bb.array().length + " > 8192). ");
                     return false;
                 }
                 sc.write(bb);
@@ -126,11 +125,11 @@ public class Client {
             }
             sc.configureBlocking(false);
             sc.register(selector, SelectionKey.OP_WRITE);
-            Writer.writeln("Соединение установлено: " + sc.getLocalAddress());
+            Channel.channel("Соединение установлено: " + sc.getLocalAddress());
 
         } catch (IOException e) {
             key.cancel();
-            Writer.writeln("Сервер недоступен. Попробуйте переподключиться позже.");
+            Channel.channel("Сервер недоступен. Попробуйте переподключиться позже.");
             return false;
         }
         return true;
