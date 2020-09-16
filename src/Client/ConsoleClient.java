@@ -6,7 +6,7 @@ import Exceptions.*;
 import java.util.Scanner;
 
 /**
- * Класс, считывающий строки из консоли
+ * РљР»Р°СЃСЃ, СЃС‡РёС‚С‹РІР°СЋС‰РёР№ СЃС‚СЂРѕРєРё РёР· РєРѕРЅСЃРѕР»Рё
  */
 public class ConsoleClient extends CommandReader {
     public static ConsoleClient console = new ConsoleClient();
@@ -17,7 +17,7 @@ public class ConsoleClient extends CommandReader {
 
     
     /**
-     * Метод для парсинга Double
+     * РњРµС‚РѕРґ РґР»СЏ РїР°СЂСЃРёРЅРіР° Double
      */
     public static Double handlerD(String s, Checker<Double> c) throws EndOfFileException {
         String line;
@@ -27,19 +27,19 @@ public class ConsoleClient extends CommandReader {
                 Writer.write(s);
                 line = console.read();
                 if (line == null)
-                    throw new EndOfFileException("Преждевременный конец файла!");
+                    throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
                 else if (line.equals(""))
                     return c.checker(null);
                 return c.checker(Double.parseDouble(line));
             } catch (NumberFormatException e) {
-                Writer.writeln("\u001B[31m" + "Ошибка ввода, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РћС€РёР±РєР° РІРІРѕРґР°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             } catch (FailedCheckException e) {
-                Writer.writeln("\u001B[31m" + "Условия не соблюдены, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РЈСЃР»РѕРІРёСЏ РЅРµ СЃРѕР±Р»СЋРґРµРЅС‹, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             }
         }
     }
     /**
-     * Метод для парсинга Integer
+     * РњРµС‚РѕРґ РґР»СЏ РїР°СЂСЃРёРЅРіР° Integer
      */
     public static Integer handlerI(String s, Checker<Integer> c) throws EndOfFileException {
         String line;
@@ -49,20 +49,20 @@ public class ConsoleClient extends CommandReader {
                 Writer.write(s);
                 line = console.read();
                 if (line == null)
-                    throw new EndOfFileException("Преждевременный конец файла!");
+                    throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
                 else if (line.equals(""))
                     return c.checker(null);
                 return c.checker(Integer.parseInt(line));
             } catch (NumberFormatException e) {
-                Writer.writeln("\u001B[31m" + "Ошибка ввода, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РћС€РёР±РєР° РІРІРѕРґР°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             } catch (FailedCheckException e) {
-                Writer.writeln("\u001B[31m" + "Условия не соблюдены, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РЈСЃР»РѕРІРёСЏ РЅРµ СЃРѕР±Р»СЋРґРµРЅС‹, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             }
         }
     }
 
     /**
-     * Метод для парсинга Long
+     * РњРµС‚РѕРґ РґР»СЏ РїР°СЂСЃРёРЅРіР° Long
      */
     public static Long handlerL(String s, Checker<Long> c) throws EndOfFileException {
         String line;
@@ -72,20 +72,20 @@ public class ConsoleClient extends CommandReader {
                 Writer.write(s);
                 line = console.read();
                 if (line == null)
-                    throw new EndOfFileException("Преждевременный конец файла!");
+                    throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
                 else if (line.equals(""))
                     return c.checker(null);
                 return c.checker(Long.parseLong(line));
             } catch (NumberFormatException e) {
-                Writer.writeln("\u001B[31m" + "Ошибка ввода, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РћС€РёР±РєР° РІРІРѕРґР°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             } catch (FailedCheckException e) {
-                Writer.writeln("\u001B[31m" + "Условия не соблюдены, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РЈСЃР»РѕРІРёСЏ РЅРµ СЃРѕР±Р»СЋРґРµРЅС‹, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             }
         }
     }
 
     /**
-     * Метод для парсинга String
+     * РњРµС‚РѕРґ РґР»СЏ РїР°СЂСЃРёРЅРіР° String
      */
     public static String handlerS(String s, Checker<String> c) throws EndOfFileException {
         String line;
@@ -94,18 +94,18 @@ public class ConsoleClient extends CommandReader {
                 Writer.write(s);
                 line = console.read();
                 if (line == null)
-                    throw new EndOfFileException("Преждевременный конец файла!");
+                    throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
                 else if (line.equals(""))
                     return c.checker(null);
                 return c.checker(line);
             } catch (FailedCheckException e) {
-                Writer.writeln("\u001B[31m" + "Условия не соблюдены, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РЈСЃР»РѕРІРёСЏ РЅРµ СЃРѕР±Р»СЋРґРµРЅС‹, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             }
         }
     }
 
     /**
-     * Метод для парсинга Boolean
+     * РњРµС‚РѕРґ РґР»СЏ РїР°СЂСЃРёРЅРіР° Boolean
      */
     public static Boolean handlerB(String s, Checker<Boolean> c) throws EndOfFileException {
         String line;
@@ -115,14 +115,14 @@ public class ConsoleClient extends CommandReader {
                 Writer.write(s);
                 line = console.read();
                 if (line == null)
-                    throw new EndOfFileException("Преждевременный конец файла!");
+                    throw new EndOfFileException("РџСЂРµР¶РґРµРІСЂРµРјРµРЅРЅС‹Р№ РєРѕРЅРµС† С„Р°Р№Р»Р°!");
                 else if (line.equals(""))
                     return c.checker(null);
                 return c.checker(parseBoolean(line));
             } catch (NumberFormatException e) {
-                Writer.writeln("\u001B[31m" + "Ошибка ввода, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РћС€РёР±РєР° РІРІРѕРґР°, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             } catch (FailedCheckException e) {
-                Writer.writeln("\u001B[31m" + "Условия не соблюдены, попробуйте еще раз" + "\u001B[0m");
+                Writer.writeln("\u001B[31m" + "РЈСЃР»РѕРІРёСЏ РЅРµ СЃРѕР±Р»СЋРґРµРЅС‹, РїРѕРїСЂРѕР±СѓР№С‚Рµ РµС‰Рµ СЂР°Р·" + "\u001B[0m");
             }
         }
     }
@@ -136,12 +136,12 @@ public class ConsoleClient extends CommandReader {
         w.writeAll();
         if (scan.hasNextLine())
             return scan.nextLine();
-        throw new EndOfFileException("Конец ввода косоли!");
+        throw new EndOfFileException("РљРѕРЅРµС† РІРІРѕРґР° РєРѕСЃРѕР»Рё!");
     }
 
     public String read() throws EndOfFileException {
         if (scan.hasNextLine())
             return scan.nextLine();
-        throw new EndOfFileException("Конец ввода косоли!");
+        throw new EndOfFileException("РљРѕРЅРµС† РІРІРѕРґР° РєРѕСЃРѕР»Рё!");
     }
 }
