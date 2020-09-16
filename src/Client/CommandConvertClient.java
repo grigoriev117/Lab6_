@@ -23,7 +23,7 @@ import java.util.Collections;
 public class CommandConvertClient {
 
 	/**
-     * Обработка команд, вводимых с консоли
+     * РћР±СЂР°Р±РѕС‚РєР° РєРѕРјР°РЅРґ, РІРІРѕРґРёРјС‹С… СЃ РєРѕРЅСЃРѕР»Рё
      */
     public static CommandSimple switcher(String s1, String s2) throws EndOfFileException {
         switch (s1) {
@@ -58,7 +58,7 @@ public class CommandConvertClient {
             case ("group_counting_by_chapter"):
                 return new CommandSimple(CommandsList.GROUP_COUNTING_BY_CHAPTER);
             default:
-                Writer.writeln("Такой команды нет");
+                Writer.writeln("РўР°РєРѕР№ РєРѕРјР°РЅРґС‹ РЅРµС‚");
         }
         return null;
     }
@@ -74,7 +74,7 @@ public class CommandConvertClient {
 	}
 
 	/**
-     * Добавляет элемент в список
+     * Р”РѕР±Р°РІР»СЏРµС‚ СЌР»РµРјРµРЅС‚ РІ СЃРїРёСЃРѕРє
      */
     public static CommandSimple add(String s) throws EndOfFileException {
         SpaceMarine sm = AddSM(s);
@@ -87,33 +87,33 @@ public class CommandConvertClient {
     };
     
     /**
-     * Считывает скрипт
+     * РЎС‡РёС‚С‹РІР°РµС‚ СЃРєСЂРёРїС‚
      */
     
     /**
-     * Удаляет элемент по его id
+     * РЈРґР°Р»СЏРµС‚ СЌР»РµРјРµРЅС‚ РїРѕ РµРіРѕ id
      */
     public static CommandSimple removeById(String s) throws EndOfFileException {
         Long id;
         try {
             id = SpaceMarine.idCheck.checker(Long.parseLong(s));
         } catch (NumberFormatException | FailedCheckException e) {
-            id = ConsoleClient.handlerL("Введите Long id: ", SpaceMarine.idCheck);
+            id = ConsoleClient.handlerL("Р’РІРµРґРёС‚Рµ Long id: ", SpaceMarine.idCheck);
         }
         return new CommandLonArg(id);
     }
     
     /**
-     * Перезаписывает элемент списка с указанным id
+     * РџРµСЂРµР·Р°РїРёСЃС‹РІР°РµС‚ СЌР»РµРјРµРЅС‚ СЃРїРёСЃРєР° СЃ СѓРєР°Р·Р°РЅРЅС‹Рј id
      */
     public static CommandSimple update(String s) throws EndOfFileException {
         Long id;
         try {
             id = SpaceMarine.idCheck.checker(Long.parseLong(s));
         } catch (NumberFormatException | FailedCheckException e) {
-            id = ConsoleClient.handlerL("Введите Long id: ", SpaceMarine.idCheck);
+            id = ConsoleClient.handlerL("Р’РІРµРґРёС‚Рµ Long id: ", SpaceMarine.idCheck);
         }
-        String name = ConsoleClient.handlerS("Введите String: name", SpaceMarine.nameCheck);
+        String name = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ String: name", SpaceMarine.nameCheck);
         SpaceMarine sm1  = AddSM(name);
         sm1.setId(id);
         return new CommandArgs(CommandsList.UPDATE, sm1); 
@@ -125,35 +125,35 @@ public class CommandConvertClient {
         sm.setId(null);
         try {
             SpaceMarine.nameCheck.checker(s);
-            Writer.writeln("Поле name: " + s);
+            Writer.writeln("РџРѕР»Рµ name: " + s);
         } catch (FailedCheckException e) {
-            s = ConsoleClient.handlerS("Введите String name, диной больше 0: ", SpaceMarine.nameCheck);
+            s = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ String name, РґРёРЅРѕР№ Р±РѕР»СЊС€Рµ 0: ", SpaceMarine.nameCheck);
         }
         sm.setName(s);
 
-        Writer.writeln("Ввoд полей Coordinates:");
-        int cx = ConsoleClient.handlerI("Введите int x: ", Coordinates.xCheck);
-        Double cy = ConsoleClient.handlerD("Введите Double y: ", Coordinates.yCheck);
+        Writer.writeln("Р’РІoРґ РїРѕР»РµР№ Coordinates:");
+        int cx = ConsoleClient.handlerI("Р’РІРµРґРёС‚Рµ int x: ", Coordinates.xCheck);
+        Double cy = ConsoleClient.handlerD("Р’РІРµРґРёС‚Рµ Double y: ", Coordinates.yCheck);
         sm.setCoordinates(new Coordinates(cx, cy));
 
         LocalDate creationTime = LocalDate.now();
         sm.setCreationDate(creationTime);
         
-        Double health1 = ConsoleClient.handlerD("Введите Double health, больше 0:", SpaceMarine.healthCheck);
+        Double health1 = ConsoleClient.handlerD("Р’РІРµРґРёС‚Рµ Double health, Р±РѕР»СЊС€Рµ 0:", SpaceMarine.healthCheck);
         sm.setHealth(health1);
 
-        boolean loyal1 = ConsoleClient.handlerB("Введите boolean loyal", boolCheck);
+        boolean loyal1 = ConsoleClient.handlerB("Р’РІРµРґРёС‚Рµ boolean loyal", boolCheck);
         sm.setLoyal(loyal1);
         
-        String achievements = ConsoleClient.handlerS("Введите String achievements", SpaceMarine.nameCheck);
+        String achievements = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ String achievements", SpaceMarine.nameCheck);
         sm.setAchievements(achievements);
 
-        Writer.writeln("Ввoд полей Chapter");
-        String name1 = ConsoleClient.handlerS("Введите String name: ", Chapter.cCheck);
-        String parentLegion1 = ConsoleClient.handlerS("Введите String parentLegion: ", Chapter.cCheck);
+        Writer.writeln("Р’РІoРґ РїРѕР»РµР№ Chapter");
+        String name1 = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ String name: ", Chapter.cCheck);
+        String parentLegion1 = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ String parentLegion: ", Chapter.cCheck);
         sm.setChapter(new Chapter(name1, parentLegion1));
         
-        String weaponType1 = ConsoleClient.handlerS("Введите Weapon weaponType {\r\n" + 
+        String weaponType1 = ConsoleClient.handlerS("Р’РІРµРґРёС‚Рµ Weapon weaponType {\r\n" + 
         		"    HEAVY_BOLTGUN,\r\n" + 
         		"    BOLT_RIFLE,\r\n" + 
         		"    PLASMA_GUN,\r\n" + 
@@ -166,7 +166,7 @@ public class CommandConvertClient {
         	sm.setWeaponType(SpaceMarine.Weapon.valueOf(weaponType1));
         }
         else {
-        	Writer.writeln("Введите из предложенных");
+        	Writer.writeln("Р’РІРµРґРёС‚Рµ РёР· РїСЂРµРґР»РѕР¶РµРЅРЅС‹С…");
         	Writer.writeln("    HEAVY_BOLTGUN,\r\n" + 
     		"    BOLT_RIFLE,\r\n" + 
     		"    PLASMA_GUN,\r\n" + 
