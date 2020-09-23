@@ -196,7 +196,7 @@ public class CommandConvert {
         if (c.list.isEmpty())
             w.addToList(true, "В коллекции нет элементов");
         else
-            c.list.forEach(r -> w.addToList(true, r.toString()));
+            c.list.forEach(s -> w.addToList(true, s.toString()));
 
         w.addToList(false,"end");
         return w;
@@ -251,21 +251,22 @@ public class CommandConvert {
             return w;
         }
     //remove_head : вывести первый элемент коллекции и удалить его
-            public static Writer remove_head(Collection c) throws EndOfFileException {
-            	Writer w = new Writer();
-            	int size = c.list.size();
-                int i = 0;
-                if (i < size) {
-                	w.addToList(true, c.list.get(i).toString());
-                	c.list.remove(c.list.get(i));
-                	// Collections.sort(c.list);
-                    }
-                else {
-                	w.addToList(true, "\u001B[31m" + "В коллекции нет элементов" + "\u001B[0m");
-            }
-                w.addToList(false,"end");
-                return w;
-                }
+	public static Writer removeFirst(Collection c) throws EndOfFileException {
+	    Writer w = new Writer();
+	    int size = c.list.size();
+	    int i = 0;
+	    if (i < size) {
+		c.list.stream().limit(1).forEach(sm -> w.addToList(true, "Удален элемент с id: " + sm.getId()));
+		c.list.remove(c.list.get(i));
+	    }
+	    else {
+		w.addToList(true, "\u001B[31m" + "В коллекции нет элементов" + "\u001B[0m");
+	    }
+	    Collections.sort(c.list);
+	    w.addToList(false,"end");
+	    return w; 
+    	
+    }
             //group_counting_by_chapter
             
        public static Writer group_counting_by_chapter(Collection c) {
