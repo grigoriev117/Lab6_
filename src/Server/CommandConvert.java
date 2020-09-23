@@ -275,29 +275,24 @@ public class CommandConvert {
                 	return w;
                 }
                 else {
-                	LinkedList<String> lan = new LinkedList<>();
-                	//boolean contains(Object element);
-                	for (SpaceMarine sm : c.list) {
-                        if (!lan.contains(sm.getChapter().getParentLegion())) {
-                        	lan.add(sm.getChapter().getParentLegion());
-                        }
-                	}
-                	for (int j = 0; j < lan.size(); j++) {
-                		w.addToList(true, "Легион:");
-                		w.addToList(true, lan.get(j));
-                		int k = 0;
-                		for (SpaceMarine sm : c.list) {
-                			if (sm.getChapter().getParentLegion().equals(lan.get(j))) {
-                				w.addToList(true, sm.toString());
-                				k = k+1;
-                			}
-                		}
-                		w.addToList(true, "Всего элементов: " + k);
-                	}
-                	w.addToList(false,"end");
-                	return w;
-               
-            }}            
+                	    LinkedList lan = new LinkedList<>();
+    			    c.list.stream().filter(sm -> !lan.contains(sm.getChapter().getParentLegion())).forEach(sm -> lan.add(sm.getChapter().getParentLegion()));
+			    for (int j = 0; j < lan.size(); j++) {
+				    w.addToList(true, "Легион:");
+				    w.addToList(true, lan.get(j));
+				    int k = 0;
+				    for (SpaceMarine sm : c.list) {
+				    	if (sm.getChapter().getParentLegion().equals(lan.get(j))) {
+				    	w.addToList(true, sm.toString());
+				    	k = k+1;
+			   	    }
+			    }
+			    w.addToList(true, "Всего элементов: " + k);
+			    }
+			    w.addToList(false,"end");
+			    return w;
+
+    }}           
                 /**
                  * remove_all_by_weapon_type
                  * @param w 
